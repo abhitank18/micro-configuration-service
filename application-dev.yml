@@ -15,6 +15,10 @@ server:
 spring:
   main:
     web-application-type: reactive
+  datasource:
+    url: jdbc:postgresql://${DB_HOST_PORT}/campaign_db?currentSchema=auth_schema
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
