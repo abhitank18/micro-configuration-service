@@ -9,9 +9,6 @@
 
 
 
-jwt:
-  secret: ${AUTH_JWT_SECRET}
-
 endpoint:
   whiteListUrls:
     - /${AUTH_CONTEXT_PATH}/auth/register
