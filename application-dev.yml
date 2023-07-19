@@ -7,7 +7,38 @@
 #     service-url:
 #       defaultZone: http://localhost:8761/eureka
 
+server:
+  port: 8080
+  servlet:
+    context-path: /
 
+spring:
+  main:
+    web-application-type: reactive
+  datasource:
+    url: jdbc:postgresql://${DB_HOST_PORT}/campaign_db?currentSchema=auth_schema
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  cloud:
+    gateway:
+      httpclient:
+        connect-timeout: 3000
+        response-timeout: 45s
+    consul:
+      host: ${CONSUL_HOST_NAME}
+      port: ${CONSUL_PORT}
+      discovery:
+        instance-id: ${spring.application.name} + ${random.value}
+        healthCheckPath: /actuator/health
+        serviceName: ${spring.application.name}
+
+jwt:
+  secret: ${AUTH_JWT_SECRET}
 
 endpoint:
   whiteListUrls:
