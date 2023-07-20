@@ -6,6 +6,8 @@
 #     register-with-eureka: true
 #     service-url:
 #       defaultZone: http://localhost:8761/eureka
+demo.msg=happay birthday
+
 
 server:
   port: 8080
