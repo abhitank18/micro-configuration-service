@@ -7,7 +7,7 @@
 #     service-url:
 #       defaultZone: http://localhost:8761/eureka
 
-demo.msg=happay birthday
+demo:msg: happy birthday abhi
 
 
 server:
