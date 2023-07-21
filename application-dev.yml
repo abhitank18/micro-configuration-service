@@ -33,6 +33,10 @@ spring:
       httpclient:
         connect-timeout: 3000
         response-timeout: 45s
+   spring:
+     cloud:
+       config:
+          uri: http://localhost:9091
     consul:
       host: ${CONSUL_HOST_NAME}
       port: ${CONSUL_PORT}
