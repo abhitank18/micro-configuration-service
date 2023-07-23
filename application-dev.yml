@@ -7,112 +7,112 @@
 #     service-url:
 #       defaultZone: http://localhost:8761/eureka
 
-# demo:
-#   msg: happy birthday abhishek ffffegggkkk
+demo:
+  msg: happy birthday abhishek ffffegggkkk
 
 
-# server:
-#   port: 8080
-#   servlet:
-#     context-path: /
+server:
+  port: 8080
+  servlet:
+    context-path: /
 
-# spring:
-#   main:
-#     web-application-type: reactive
-#   datasource:
-#     url: jdbc:postgresql://${DB_HOST_PORT}/campaign_db?currentSchema=auth_schema
-#     username: ${DB_USERNAME}
-#     password: ${DB_PASSWORD}
-#   jpa:
-#     database-platform: org.hibernate.dialect.PostgreSQLDialect
-#     show-sql: true
-#     hibernate:
-#       ddl-auto: update
-#   cloud:
-#     gateway:
-#       httpclient:
-#         connect-timeout: 3000
-#         response-timeout: 45s
+spring:
+  main:
+    web-application-type: reactive
+  datasource:
+    url: jdbc:postgresql://${DB_HOST_PORT}/campaign_db?currentSchema=auth_schema
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  cloud:
+    gateway:
+      httpclient:
+        connect-timeout: 3000
+        response-timeout: 45s
    
      
-#     config:
-#         uri: http://localhost:9091
-#     consul:
-#       host: ${CONSUL_HOST_NAME}
-#       port: ${CONSUL_PORT}
-#       discovery:
-#         instance-id: ${spring.application.name} + ${random.value}
-#         healthCheckPath: /actuator/health
-#         serviceName: ${spring.application.name}
+    config:
+        uri: http://localhost:9091
+    consul:
+      host: ${CONSUL_HOST_NAME}
+      port: ${CONSUL_PORT}
+      discovery:
+        instance-id: ${spring.application.name} + ${random.value}
+        healthCheckPath: /actuator/health
+        serviceName: ${spring.application.name}
 
-# jwt:
-#   secret: ${AUTH_JWT_SECRET}
+jwt:
+  secret: ${AUTH_JWT_SECRET}
 
-# endpoint:
-#   whiteListUrls:
-#     - /${AUTH_CONTEXT_PATH}/auth/register
-#     - /${AUTH_CONTEXT_PATH}/auth/signin
-#     - /${AUTH_CONTEXT_PATH}/auth/refresh-token
-#     - /${AUTH_CONTEXT_PATH}/auth/totp-verify
-#     - /${AUTH_CONTEXT_PATH}/auth/send-otp
-#     - /${AUTH_CONTEXT_PATH}/auth/verify-otp
-#     - /${AUTH_CONTEXT_PATH}/auth/change-password
-#     - /${AUTH_CONTEXT_PATH}/auth/verify-2fa-otp
-#     - /${AUTH_CONTEXT_PATH}/has-permission
-#     - /${SERVICE_CONTEXT_PATH}/inquiry
-#     - /api-docs/**
-#     - /v3/api-docs
-#     - /swagger-ui/**
-#     - /swagger-ui.html
-#     - ${ZIPKIN_URL}
-#     - /webjars/**
-#     - /v3-new
+endpoint:
+  whiteListUrls:
+    - /${AUTH_CONTEXT_PATH}/auth/register
+    - /${AUTH_CONTEXT_PATH}/auth/signin
+    - /${AUTH_CONTEXT_PATH}/auth/refresh-token
+    - /${AUTH_CONTEXT_PATH}/auth/totp-verify
+    - /${AUTH_CONTEXT_PATH}/auth/send-otp
+    - /${AUTH_CONTEXT_PATH}/auth/verify-otp
+    - /${AUTH_CONTEXT_PATH}/auth/change-password
+    - /${AUTH_CONTEXT_PATH}/auth/verify-2fa-otp
+    - /${AUTH_CONTEXT_PATH}/has-permission
+    - /${SERVICE_CONTEXT_PATH}/inquiry
+    - /api-docs/**
+    - /v3/api-docs
+    - /swagger-ui/**
+    - /swagger-ui.html
+    - ${ZIPKIN_URL}
+    - /webjars/**
+    - /v3-new
 
-# #management:
-# #  tracing:
-# #    sampling:
-# #      probability: 1.0
+#management:
+#  tracing:
+#    sampling:
+#      probability: 1.0
 
-# springdoc:
-#   enable-native-support: true
-#   api-docs:
-#     path: /v3/api-docs
-#     enabled: true
-#   swagger-ui:
-#     enabled: true
-#     path: /swagger-ui.html
-#     config-url: /v3/api-docs/swagger-config
-#     urls:
-#       - url: /${ACTION_CARDS_CONTEXT_PATH}/v3/api-docs
-#         name: action-card service
-#         primaryName: action-card service
-#       - url: /${ANALYTICS_CONTEXT_PATH}/v3/api-docs
-#         name: Analytic service
-#         primaryName: Analytic service
-#       - url: /v3/api-docs
-#         name: API Gateway Service
-#         primaryName: API Gateway Service
-#       - url: /${AUTH_CONTEXT_PATH}/v3/api-docs
-#         name: Auth service
-#         primaryName: Auth service
-#       - url: /${BATCH_CONTEXT_PATH}/v3/api-docs
-#         name: Batch service
-#         primaryName: Batch service
-#       - url: /${CATEGORIZATION_CONTEXT_PATH}/v3/api-docs
-#         name: Categorization service
-#         primaryName: Categorization service
-#       - url: /${DOCUMENT_CONTEXT_PATH}/v3/api-docs
-#         name: Document service
-#         primaryName: Document service
-#       - url: /${NOTIFICATION_CONTEXT_PATH}/v3/api-docs
-#         name: Notification service
-#         primaryName: Notification service
-#       - url: /${PAYMENT_CONTEXT_PATH}/v3/api-docs
-#         name: Payment service
-#         primaryName: Campaign service
-#       - url: /${SERVICE_CONTEXT_PATH}/v3/api-docs
-#         name: Campaign service
-#         primaryName: Campaign service
-#       - url: /${SURVEY_CONTEXT_PATH}/v3/api-docs
-#         name: Survey service
-#         primaryName: Survey service
+springdoc:
+  enable-native-support: true
+  api-docs:
+    path: /v3/api-docs
+    enabled: true
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    config-url: /v3/api-docs/swagger-config
+    urls:
+      - url: /${ACTION_CARDS_CONTEXT_PATH}/v3/api-docs
+        name: action-card service
+        primaryName: action-card service
+      - url: /${ANALYTICS_CONTEXT_PATH}/v3/api-docs
+        name: Analytic service
+        primaryName: Analytic service
+      - url: /v3/api-docs
+        name: API Gateway Service
+        primaryName: API Gateway Service
+      - url: /${AUTH_CONTEXT_PATH}/v3/api-docs
+        name: Auth service
+        primaryName: Auth service
+      - url: /${BATCH_CONTEXT_PATH}/v3/api-docs
+        name: Batch service
+        primaryName: Batch service
+      - url: /${CATEGORIZATION_CONTEXT_PATH}/v3/api-docs
+        name: Categorization service
+        primaryName: Categorization service
+      - url: /${DOCUMENT_CONTEXT_PATH}/v3/api-docs
+        name: Document service
+        primaryName: Document service
+      - url: /${NOTIFICATION_CONTEXT_PATH}/v3/api-docs
+        name: Notification service
+        primaryName: Notification service
+      - url: /${PAYMENT_CONTEXT_PATH}/v3/api-docs
+        name: Payment service
+        primaryName: Campaign service
+      - url: /${SERVICE_CONTEXT_PATH}/v3/api-docs
+        name: Campaign service
+        primaryName: Campaign service
+      - url: /${SURVEY_CONTEXT_PATH}/v3/api-docs
+        name: Survey service
+        primaryName: Survey service
