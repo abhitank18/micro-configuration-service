@@ -8,7 +8,7 @@
 #       defaultZone: http://localhost:8761/eureka
 
 demo:
-  msg: happy birthday abhishek ffffegggkkkaaabbb
+  msg: happy birthday abhishek ffffegggkkkaaabbbccc
 
 
 server:
