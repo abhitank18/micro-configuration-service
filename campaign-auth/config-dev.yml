@@ -3,6 +3,9 @@ server:
   servlet:
     context-path: /${AUTH_CONTEXT_PATH}
 
+demo:
+  abhi: hello abhi!!!!!!!!
+
 spring:
   security:
     oauth2:
