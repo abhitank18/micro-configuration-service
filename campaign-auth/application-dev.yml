@@ -1,6 +1,13 @@
 server:
  port: 9079
 
+jwt:
+  secret: ${AUTH_JWT_SECRET}
+  token:
+    validity: ${AUTH_JWT_TOKEN_VALIDITY}
+  refreshtoken:
+    validity: ${AUTH_JWT_REFRESH_TOKEN_VALIDITY}
+
 kafka:
     consumer:
       auto-offset-reset: earliest
