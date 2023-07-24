@@ -1,116 +1,116 @@
-server:
-  port: 9071
-  servlet:
-    context-path: /${AUTH_CONTEXT_PATH}
+# server:
+#   port: 9071
+#   servlet:
+#     context-path: /${AUTH_CONTEXT_PATH}
 
-demo:
-  abhi: hello abhi!!!!!!!!
+# demo:
+#   abhi: hello abhi!!!!!!!!
 
-spring:
-  security:
-    oauth2:
-      client:
-        registration:
-          azure:
-            client-id: ${OAUTH2_AZURE_CLIENT_ID}
-            client-secret: ${OAUTH2_AZURE_CLIENT_SECRET}
-            client-name: ${OAUTH2_AZURE_CLIENT_NAME}
-            redirect-uri: ${OAUTH2_AZURE_CLIENT_REDIRECT_URI}
-            scope: ${OAUTH2_AZURE_CLIENT_SCOPE}
-        provider:
-          azure:
-            authorization-uri: ${OAUTH2_AZURE_CLIENT_AUTHORIZATION_URI}
-            token-uri: ${OAUTH2_AZURE_CLIENT_TOKEN_URI}
-            jwk-set-uri: ${OAUTH2_AZURE_CLIENT_JWK_SET_URI}
-            user-info-uri: ${OAUTH2_AZURE_CLIENT_USER_INFO_URI}
-            issuer-uri: ${OAUTH2_AZURE_CLIENT_ISSUER_URI}
-            user-name-attribute: ${OAUTH2_AZURE_CLIENT_USER_NAME_ATTRIBUTE}
+# spring:
+#   security:
+#     oauth2:
+#       client:
+#         registration:
+#           azure:
+#             client-id: ${OAUTH2_AZURE_CLIENT_ID}
+#             client-secret: ${OAUTH2_AZURE_CLIENT_SECRET}
+#             client-name: ${OAUTH2_AZURE_CLIENT_NAME}
+#             redirect-uri: ${OAUTH2_AZURE_CLIENT_REDIRECT_URI}
+#             scope: ${OAUTH2_AZURE_CLIENT_SCOPE}
+#         provider:
+#           azure:
+#             authorization-uri: ${OAUTH2_AZURE_CLIENT_AUTHORIZATION_URI}
+#             token-uri: ${OAUTH2_AZURE_CLIENT_TOKEN_URI}
+#             jwk-set-uri: ${OAUTH2_AZURE_CLIENT_JWK_SET_URI}
+#             user-info-uri: ${OAUTH2_AZURE_CLIENT_USER_INFO_URI}
+#             issuer-uri: ${OAUTH2_AZURE_CLIENT_ISSUER_URI}
+#             user-name-attribute: ${OAUTH2_AZURE_CLIENT_USER_NAME_ATTRIBUTE}
 
-  datasource:
-    url: jdbc:postgresql://${DB_HOST_PORT}/campaign_db?currentSchema=auth_schema
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
-  jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-    show-sql: true
-    hibernate:
-      ddl-auto: update
+#   datasource:
+#     url: jdbc:postgresql://${DB_HOST_PORT}/campaign_db?currentSchema=auth_schema
+#     username: ${DB_USERNAME}
+#     password: ${DB_PASSWORD}
+#   jpa:
+#     database-platform: org.hibernate.dialect.PostgreSQLDialect
+#     show-sql: true
+#     hibernate:
+#       ddl-auto: update
 
-  kafka:
-    consumer:
-      auto-offset-reset: earliest
-      bootstrap-servers: ${KAFKA_CONSUMER_BOOTSTRAP_SERVERS}
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      properties:
-        isolation:
-        level: read_committed
-        spring:
-          json:
-            trusted:
-              packages: "*"
-      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-      enable-auto-commit: 'false'
-      group-id: campaign_auth
-    producer:
-      bootstrap-servers: ${KAFKA_CONSUMER_BOOTSTRAP_SERVERS}
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-    topic:
-      email: email_topic
-      sms: sms_topic
-      user: campaign_user
-      inquiry: user_inquiry
-      actionCard: actionCard_User
-      delete-users: delete_users
+#   kafka:
+#     consumer:
+#       auto-offset-reset: earliest
+#       bootstrap-servers: ${KAFKA_CONSUMER_BOOTSTRAP_SERVERS}
+#       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#       properties:
+#         isolation:
+#         level: read_committed
+#         spring:
+#           json:
+#             trusted:
+#               packages: "*"
+#       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+#       enable-auto-commit: 'false'
+#       group-id: campaign_auth
+#     producer:
+#       bootstrap-servers: ${KAFKA_CONSUMER_BOOTSTRAP_SERVERS}
+#       key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+#     topic:
+#       email: email_topic
+#       sms: sms_topic
+#       user: campaign_user
+#       inquiry: user_inquiry
+#       actionCard: actionCard_User
+#       delete-users: delete_users
 
-  mail:
-    host: smtp.gmail.com
-    port: 587
-    username: ${EMAIL_USERNAME}
-    password: ${EMAIL_PASSWORD}
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
-  cloud:
-    consul:
-      host: ${CONSUL_HOST_NAME}
-      port: ${CONSUL_PORT}
-      discovery:
-        instance-id: ${spring.application.name} + ${random.value}
-        healthCheckPath: ${server.servlet.context-path}/actuator/health
-        serviceName: ${spring.application.name}
+#   mail:
+#     host: smtp.gmail.com
+#     port: 587
+#     username: ${EMAIL_USERNAME}
+#     password: ${EMAIL_PASSWORD}
+#     properties:
+#       mail:
+#         smtp:
+#           auth: true
+#           starttls:
+#             enable: true
+#   cloud:
+#     consul:
+#       host: ${CONSUL_HOST_NAME}
+#       port: ${CONSUL_PORT}
+#       discovery:
+#         instance-id: ${spring.application.name} + ${random.value}
+#         healthCheckPath: ${server.servlet.context-path}/actuator/health
+#         serviceName: ${spring.application.name}
 
-jwt:
-  secret: ${AUTH_JWT_SECRET}
-  token:
-    validity: ${AUTH_JWT_TOKEN_VALIDITY}
-  refreshtoken:
-    validity: ${AUTH_JWT_REFRESH_TOKEN_VALIDITY}
+# jwt:
+#   secret: ${AUTH_JWT_SECRET}
+#   token:
+#     validity: ${AUTH_JWT_TOKEN_VALIDITY}
+#   refreshtoken:
+#     validity: ${AUTH_JWT_REFRESH_TOKEN_VALIDITY}
 
-delete-user-days: ${DELETE_USER_DAYS}
+# delete-user-days: ${DELETE_USER_DAYS}
 
-otp:
-  validity: ${OTP_VALIDITY}
+# otp:
+#   validity: ${OTP_VALIDITY}
 
-mail-service: true
-otp-service-type: mail
+# mail-service: true
+# otp-service-type: mail
 
-management:
-  tracing:
-    sampling:
-      probability: 1.0
+# management:
+#   tracing:
+#     sampling:
+#       probability: 1.0
 
-#swagger openapi configuration
-openapi:
-  service:
-    title: campaign-auth DEV server doc
-    version: 1.0.0
-    url: ${GATEWAY_URL}
-springdoc:
-  api-docs:
-    path: /v3/api-docs
-  swagger-ui:
-    path: /swagger-ui.html
+# #swagger openapi configuration
+# openapi:
+#   service:
+#     title: campaign-auth DEV server doc
+#     version: 1.0.0
+#     url: ${GATEWAY_URL}
+# springdoc:
+#   api-docs:
+#     path: /v3/api-docs
+#   swagger-ui:
+#     path: /swagger-ui.html
