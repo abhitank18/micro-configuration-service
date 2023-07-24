@@ -1,30 +1,11 @@
 server:
-  port: 9071
+  port: 9072
   servlet:
-    context-path: /${AUTH_CONTEXT_PATH}
+    context-path: /${SERVICE_CONTEXT_PATH}
 
 spring:
-  security:
-    oauth2:
-      client:
-        registration:
-          azure:
-            client-id: ${OAUTH2_AZURE_CLIENT_ID}
-            client-secret: ${OAUTH2_AZURE_CLIENT_SECRET}
-            client-name: ${OAUTH2_AZURE_CLIENT_NAME}
-            redirect-uri: ${OAUTH2_AZURE_CLIENT_REDIRECT_URI}
-            scope: ${OAUTH2_AZURE_CLIENT_SCOPE}
-        provider:
-          azure:
-            authorization-uri: ${OAUTH2_AZURE_CLIENT_AUTHORIZATION_URI}
-            token-uri: ${OAUTH2_AZURE_CLIENT_TOKEN_URI}
-            jwk-set-uri: ${OAUTH2_AZURE_CLIENT_JWK_SET_URI}
-            user-info-uri: ${OAUTH2_AZURE_CLIENT_USER_INFO_URI}
-            issuer-uri: ${OAUTH2_AZURE_CLIENT_ISSUER_URI}
-            user-name-attribute: ${OAUTH2_AZURE_CLIENT_USER_NAME_ATTRIBUTE}
-
   datasource:
-    url: jdbc:postgresql://${DB_HOST_PORT}/campaign_db?currentSchema=auth_schema
+    url: jdbc:postgresql://${DB_HOST_PORT}/campaign_db?currentSchema=campaign
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
   jpa:
@@ -32,11 +13,13 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
-
+  #  liquibase:
+  #    enabled: true
+  #    change-log: classpath:db/changelog-master.xml
   kafka:
     consumer:
-      auto-offset-reset: earliest
       bootstrap-servers: ${KAFKA_CONSUMER_BOOTSTRAP_SERVERS}
+      auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       properties:
         isolation:
@@ -47,30 +30,15 @@ spring:
               packages: "*"
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       enable-auto-commit: 'false'
-      group-id: campaign_auth
+      group-id: campaign_service
     producer:
       bootstrap-servers: ${KAFKA_CONSUMER_BOOTSTRAP_SERVERS}
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
     topic:
-      email: email_topic
-      sms: sms_topic
       user: campaign_user
       inquiry: user_inquiry
-      actionCard: actionCard_User
-      delete-users: delete_users
-
-  mail:
-    host: smtp.gmail.com
-    port: 587
-    username: ${EMAIL_USERNAME}
-    password: ${EMAIL_PASSWORD}
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
+      actionCard : actionCard_user
   cloud:
     consul:
       host: ${CONSUL_HOST_NAME}
@@ -80,21 +48,6 @@ spring:
         healthCheckPath: ${server.servlet.context-path}/actuator/health
         serviceName: ${spring.application.name}
 
-jwt:
-  secret: ${AUTH_JWT_SECRET}
-  token:
-    validity: ${AUTH_JWT_TOKEN_VALIDITY}
-  refreshtoken:
-    validity: ${AUTH_JWT_REFRESH_TOKEN_VALIDITY}
-
-delete-user-days: ${DELETE_USER_DAYS}
-
-otp:
-  validity: ${OTP_VALIDITY}
-
-mail-service: true
-otp-service-type: mail
-
 management:
   tracing:
     sampling:
@@ -103,7 +56,7 @@ management:
 #swagger openapi configuration
 openapi:
   service:
-    title: campaign-auth DEV server doc
+    title: campaign-payment DEV server doc
     version: 1.0.0
     url: ${GATEWAY_URL}
 springdoc:
